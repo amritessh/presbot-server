@@ -1,0 +1,72 @@
+{
+  "Clarity": {
+    "definition": "How clearly and distinctly the speaker pronounces words and syllables.",
+    "guidelines": {
+      "1": "Speech is extremely unclear, mumbled, or hesitant. The student shows no confidence, sounding extremely unsure or nervous.",
+      "2": "Speech is unclear and mumbled in many parts. The student lacks confidence, sounding unsure or nervous.",
+      "3": "Speech is mostly clear, with some mumbling or hesitations. The student shows some confidence, but may sound unsure at times.",
+      "4": "Speech is clear and articulate. The student shows good confidence, speaking with a steady voice, and projecting a sense of ease.",
+      "5": "Speech is clear, articulate, and confident. The student speaks with a steady, assured voice, projecting a sense of authority and ease."
+    }
+  },
+  "Confidence": {
+    "definition": "The speaker's assurance and composure. Do they sound sure of themselves? Are they speaking with a steady voice?",
+    "guidelines": {
+      "1": "The speaker shows no confidence, sounding extremely unsure, nervous, and hesitant.",
+      "2": "The speaker lacks confidence, sounding unsure, nervous, and hesitant.",
+      "3": "The speaker shows some confidence, but may sound unsure at times.",
+      "4": "The speaker shows good confidence, speaking with a steady voice, and projecting a sense of ease.",
+      "5": "The speaker demonstrates exceptional confidence, speaking with a steady, assured voice, projecting a sense of authority and ease."
+    }
+  },
+  "Tone": {
+    "definition": "The speaker's emotional coloring and expressiveness. Is the tone varied, engaging, and appropriate for the content?",
+    "guidelines": {
+      "1": "Tone is extremely monotonous and lacks any variation.",
+      "2": "Tone is mostly monotonous and lacks variation.",
+      "3": "Tone has some variation, but is not always effective.",
+      "4": "Tone is varied and engaging, creating interest and effectively conveying the message.",
+      "5": "Tone is exceptionally varied and engaging, expertly highlighting key points and maintaining audience interest."
+    }
+  },
+  "Pacing": {
+    "definition": "The speed at which the speaker delivers their message. Is the pacing appropriate for the topic and audience, allowing for easy comprehension?",
+    "guidelines": {
+      "1": "Pacing is extremely fast or slow, making the presentation impossible to follow.",
+      "2": "Pacing is too fast or too slow, making the presentation difficult to follow.",
+      "3": "Pacing is somewhat consistent, but might rush through certain parts or speak too slowly at others.",
+      "4": "Pacing is appropriate for the topic and audience, creating a smooth and natural flow.",
+      "5": "Pacing is perfect for the topic and audience, creating a seamless and dynamic flow."
+    }
+  },
+  "Engagement": {
+    "definition": "The degree to which the speaker keeps the audience interested and attentive.",
+    "guidelines": {
+      "1": "Presentation is completely unengaging and lacks any energy.",
+      "2": "Presentation is very unengaging and lacks energy.",
+      "3": "Presentation shows some engagement, with a few instances of effective verbal punctuation or tone variation.",
+      "4": "Presentation is engaging and dynamic. The student effectively uses verbal punctuation, tone variation, and energy.",
+      "5": "Presentation is exceptionally engaging, captivating the audience with expert use of verbal punctuation, tone variation, and high energy."
+    }
+  },
+  "Cadence": {
+    "definition": "The rhythm of the speaker's sentences. Do sentences flow smoothly and naturally, or are they choppy and uneven?",
+    "guidelines": {
+      "1": "Sentences are extremely choppy and uneven in rhythm.",
+      "2": "Sentences are choppy and uneven in rhythm, making the presentation sound awkward.",
+      "3": "Sentences have some variation in rhythm, but the flow is inconsistent.",
+      "4": "Sentences are varied and flow smoothly, creating a compelling rhythm.",
+      "5": "Sentences are exceptionally varied and flow smoothly, creating a natural and engaging rhythm."
+    }
+  },
+  "Flow": {
+    "definition": "The overall smoothness of the presentation, avoiding unnecessary pauses or rushing.",
+    "guidelines": {
+      "1": "The presentation is extremely choppy and disjointed, with constant unnecessary pauses or rushing.",
+      "2": "The presentation is very choppy and disjointed, with frequent unnecessary pauses or rushing.",
+      "3": "The presentation is mostly smooth, but has some awkward pauses or rushed speech.",
+      "4": "The presentation is smooth and natural, with a consistent flow and appropriate pacing.",
+      "5": "Presentation is exceptionally smooth and natural, with perfect pacing and seamless transitions."
+    }
+  }
+}

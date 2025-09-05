@@ -1,0 +1,56 @@
+   2546021:	find library=libm.so.6 [0]; searching
+   2546021:	 search cache=/etc/ld.so.cache
+   2546021:	  trying file=/lib/x86_64-linux-gnu/libm.so.6
+   2546021:	
+   2546021:	find library=libexpat.so.1 [0]; searching
+   2546021:	 search cache=/etc/ld.so.cache
+   2546021:	  trying file=/lib/x86_64-linux-gnu/libexpat.so.1
+   2546021:	
+   2546021:	find library=libz.so.1 [0]; searching
+   2546021:	 search cache=/etc/ld.so.cache
+   2546021:	  trying file=/lib/x86_64-linux-gnu/libz.so.1
+   2546021:	
+   2546021:	find library=libc.so.6 [0]; searching
+   2546021:	 search cache=/etc/ld.so.cache
+   2546021:	  trying file=/lib/x86_64-linux-gnu/libc.so.6
+   2546021:	
+   2546021:	
+   2546021:	calling init: /lib64/ld-linux-x86-64.so.2
+   2546021:	
+   2546021:	
+   2546021:	calling init: /lib/x86_64-linux-gnu/libc.so.6
+   2546021:	
+   2546021:	
+   2546021:	calling init: /lib/x86_64-linux-gnu/libz.so.1
+   2546021:	
+   2546021:	
+   2546021:	calling init: /lib/x86_64-linux-gnu/libexpat.so.1
+   2546021:	
+   2546021:	
+   2546021:	calling init: /lib/x86_64-linux-gnu/libm.so.6
+   2546021:	
+   2546021:	
+   2546021:	initialize program: python
+   2546021:	
+   2546021:	
+   2546021:	transferring control: python
+   2546021:	
+python: can't open file '/opt/presBot/your_script.py': [Errno 2] No such file or directory
+   2546021:	
+   2546021:	calling fini:  [0]
+   2546021:	
+   2546021:	
+   2546021:	calling fini: /lib/x86_64-linux-gnu/libm.so.6 [0]
+   2546021:	
+   2546021:	
+   2546021:	calling fini: /lib/x86_64-linux-gnu/libexpat.so.1 [0]
+   2546021:	
+   2546021:	
+   2546021:	calling fini: /lib/x86_64-linux-gnu/libz.so.1 [0]
+   2546021:	
+   2546021:	
+   2546021:	calling fini: /lib/x86_64-linux-gnu/libc.so.6 [0]
+   2546021:	
+   2546021:	
+   2546021:	calling fini: /lib64/ld-linux-x86-64.so.2 [0]
+   2546021:	

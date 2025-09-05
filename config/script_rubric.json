@@ -1,0 +1,172 @@
+{
+  "Content Quality": {
+    "definition": "Grammar, word choice, clarity of ideas, and overall language proficiency in the written script.",
+    "guidelines": {
+      "1": "Poor grammar with frequent errors, unclear word choices, and confusing ideas. Language is inappropriate or unprofessional.",
+      "2": "Noticeable grammar errors and awkward word choices. Ideas are somewhat unclear or poorly expressed.",
+      "3": "Generally good grammar and word choice with occasional errors. Ideas are mostly clear and well-expressed.",
+      "4": "Strong grammar and excellent word choice. Ideas are clear, well-articulated, and professionally expressed.",
+      "5": "Exceptional grammar and sophisticated word choice. Ideas are crystal clear, eloquently expressed, and demonstrate mastery."
+    },
+    "behavioral_indicators": {
+      "positive": [
+        "proper grammar",
+        "sophisticated vocabulary",
+        "clear ideas",
+        "professional language",
+        "error-free writing"
+      ],
+      "negative": [
+        "grammar errors",
+        "poor word choice",
+        "unclear ideas",
+        "informal language",
+        "confusing expressions"
+      ]
+    }
+  },
+  "Structure & Organization": {
+    "definition": "Logical flow, coherent organization, effective transitions, and overall structural soundness of the script.",
+    "guidelines": {
+      "1": "No clear structure or organization. Ideas jump randomly without logical connections or transitions.",
+      "2": "Poor organization with weak transitions. Structure is difficult to follow and lacks coherence.",
+      "3": "Basic organization with some logical flow. Transitions are present but may be awkward or unclear.",
+      "4": "Well-organized with clear structure and smooth transitions. Ideas flow logically from one to the next.",
+      "5": "Exceptionally organized with masterful structure. Seamless transitions create perfect logical flow."
+    },
+    "behavioral_indicators": {
+      "positive": [
+        "logical sequence",
+        "clear transitions",
+        "coherent structure",
+        "organized ideas",
+        "smooth flow"
+      ],
+      "negative": [
+        "disorganized content",
+        "abrupt changes",
+        "missing transitions",
+        "confusing order",
+        "scattered ideas"
+      ]
+    }
+  },
+  "Professionalism & Tone": {
+    "definition": "Appropriateness of language, tone, and style for the intended audience and presentation context.",
+    "guidelines": {
+      "1": "Completely inappropriate tone or language for the audience. Unprofessional or offensive content.",
+      "2": "Mostly inappropriate tone with frequent lapses in professionalism. Language doesn't match audience expectations.",
+      "3": "Generally appropriate tone with occasional informal language. Mostly suitable for the intended audience.",
+      "4": "Professional and appropriate tone throughout. Language perfectly matches audience and context expectations.",
+      "5": "Exceptionally professional with masterful tone adaptation. Language demonstrates sophisticated audience awareness."
+    },
+    "behavioral_indicators": {
+      "positive": [
+        "appropriate formality",
+        "audience-aware language",
+        "professional tone",
+        "respectful content",
+        "contextual awareness"
+      ],
+      "negative": [
+        "inappropriate language",
+        "wrong formality level",
+        "unprofessional tone",
+        "audience mismatch",
+        "contextual errors"
+      ]
+    }
+  },
+  "Engagement Potential": {
+    "definition": "How compelling, interesting, and engaging the written content would be when delivered to the target audience.",
+    "guidelines": {
+      "1": "Content is completely unengaging, boring, or irrelevant. No attempt to capture audience interest.",
+      "2": "Content lacks engagement with minimal interesting elements. Little consideration for audience interest.",
+      "3": "Content has some engaging elements but inconsistent appeal. Moderate consideration for audience engagement.",
+      "4": "Content is engaging and interesting with compelling elements. Strong consideration for audience appeal.",
+      "5": "Content is exceptionally engaging and captivating. Masterful use of compelling elements to maintain interest."
+    },
+    "behavioral_indicators": {
+      "positive": [
+        "compelling ideas",
+        "interesting examples",
+        "audience relevance",
+        "engaging language",
+        "thought-provoking content"
+      ],
+      "negative": [
+        "boring content",
+        "irrelevant information",
+        "dry presentation",
+        "no examples",
+        "disconnected from audience"
+      ]
+    }
+  },
+  "Delivery Readiness": {
+    "definition": "How well the script is prepared for oral delivery, including readability, natural speech patterns, and speaking cues.",
+    "guidelines": {
+      "1": "Script is extremely difficult to read aloud with unnatural language and no consideration for oral delivery.",
+      "2": "Script is challenging to deliver with awkward phrasing and poor readability for speaking.",
+      "3": "Script is moderately ready for delivery with some natural language but occasional awkward phrases.",
+      "4": "Script flows naturally when spoken with good readability and speech-friendly language.",
+      "5": "Script is perfectly crafted for oral delivery with natural speech patterns and excellent flow when spoken."
+    },
+    "behavioral_indicators": {
+      "positive": [
+        "natural speech patterns",
+        "appropriate pauses",
+        "speakable language",
+        "clear delivery cues",
+        "conversational flow"
+      ],
+      "negative": [
+        "unnatural phrasing",
+        "difficult to speak",
+        "written-only language",
+        "no pause indicators",
+        "awkward when spoken"
+      ]
+    }
+  },
+  "weighting_by_context": {
+    "description": "Suggested category weights for script evaluation based on presentation context",
+    "contexts": {
+      "business_presentation": {
+        "Professionalism & Tone": 0.3,
+        "Content Quality": 0.25,
+        "Structure & Organization": 0.2,
+        "Delivery Readiness": 0.15,
+        "Engagement Potential": 0.1
+      },
+      "class_presentation": {
+        "Content Quality": 0.3,
+        "Structure & Organization": 0.25,
+        "Delivery Readiness": 0.2,
+        "Professionalism & Tone": 0.15,
+        "Engagement Potential": 0.1
+      },
+      "sales_pitch": {
+        "Engagement Potential": 0.35,
+        "Professionalism & Tone": 0.25,
+        "Content Quality": 0.2,
+        "Delivery Readiness": 0.15,
+        "Structure & Organization": 0.05
+      },
+      "academic_conference": {
+        "Content Quality": 0.35,
+        "Structure & Organization": 0.25,
+        "Professionalism & Tone": 0.2,
+        "Delivery Readiness": 0.15,
+        "Engagement Potential": 0.05
+      },
+      "public_speaking": {
+        "Engagement Potential": 0.3,
+        "Delivery Readiness": 0.25,
+        "Content Quality": 0.2,
+        "Professionalism & Tone": 0.15,
+        "Structure & Organization": 0.1
+      }
+    }
+  }
+}
