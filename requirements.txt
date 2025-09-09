@@ -10,3 +10,7 @@ python-dotenv
 pydub
 requests
 pyjwt
+transformers
+torch
+torchaudio
+pydantic
