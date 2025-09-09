@@ -69,6 +69,26 @@ if [ -f requirements.txt ]; then
   pip install -r requirements.txt
 fi
 
+echo "🔧 Ensuring start.sh is executable..."
+chmod +x start.sh
+
+echo "🔧 Updating start.sh to activate venv..."
+# Update start.sh to activate venv before running gunicorn
+cat > start.sh << 'EOF'
+#!/bin/bash
+
+# Force bitsandbytes to load CUDA 12.8 shared library
+export BITSANDBYTES_FORCE_CUDA_VERSION=128
+
+# Activate virtual environment
+source .venv/bin/activate
+
+# Start the Gunicorn server
+exec gunicorn -w 1 --timeout 720 -b 0.0.0.0:6969 api.app:app
+EOF
+
+chmod +x start.sh
+
 echo "📁 Ensuring logs dir exists..."
 mkdir -p "$BASE_DIR/logs"
 
