@@ -1,4 +1,12 @@
 celery>=5.3.0
 kombu>=5.3.0
-pymongo>=4.0.0 
+pymongo>=4.0.0
 gunicorn
+flask
+flask-cors
+boto3
+faster-whisper
+python-dotenv
+pydub
+requests
+pyjwt
