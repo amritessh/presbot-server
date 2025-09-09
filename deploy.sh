@@ -4,7 +4,7 @@ set -euo pipefail
 
 echo "🚀 Deploying presbot-api..."
 
-REPO_URL=${REPO_URL:-"https://github.com/yourorg/presbot-server.git"}
+REPO_URL=${REPO_URL:-"https://github.com/amritessh/presbot-server.git"}
 ENVIRONMENT=${ENVIRONMENT:-production}   # production | uat
 BRANCH_NAME=${BRANCH:-release/prod}      # release/prod | release/uat
 
