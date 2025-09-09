@@ -43,7 +43,7 @@ echo "📦 Using environment: ${ENVIRONMENT} | branch: ${BRANCH_NAME} | dir: ${B
 echo "📦 Fetching & updating code..."
 git fetch --all --prune
 git checkout "${BRANCH_NAME}"
-git pull --ff-only origin "${BRANCH_NAME}"
+git reset --hard origin/"${BRANCH_NAME}"
 
 # Load environment from .env if present (dotenv is also used in app)
 if [ -f .env ]; then
