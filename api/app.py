@@ -9,6 +9,7 @@ from functools import wraps
 from datetime import datetime
 import tempfile
 from bson import ObjectId
+import torch
 
 # Import from our organized modules
 from config import (
@@ -21,6 +22,7 @@ from utils.utils import (
     upload_to_minio, process_pauses
 )
 from agents.audio_grading_agent import AudioGradingAgent
+from agents.qwen_audio_grading_agent import QwenAudioGradingAgent
 from agents.script_grading_agent import ScriptGradingAgent
 
 # Pydantic models
@@ -33,6 +35,8 @@ from models.models import (
 # Initialize grading agents
 audio_grading_agent = AudioGradingAgent(
     LLAMA_URL, LLAMA_MODEL, "config/rubric.json")
+qwen_audio_grading_agent = QwenAudioGradingAgent(
+    rubric_path="config/rubric.json")
 script_grading_agent = ScriptGradingAgent(
     llama_url="http://localhost:5000/api/chat",
     llama_model=LLAMA_MODEL
@@ -201,8 +205,8 @@ def grade_audio():
 
         # Phase 1: Audio grading
         print("Starting audio grading...")
-        audio_results = audio_grading_agent.grade_audio_delivery(
-            transcript, presentation_type, audience, goals, custom_goals
+        audio_results = qwen_audio_grading_agent.grade_audio_delivery(
+            audio_path, presentation_type, audience, goals, custom_goals, transcript
         )
         print("Audio grading completed.")
 
@@ -840,6 +844,55 @@ def get_session_status():
             'email': session.get('email')
         })
     return jsonify({'authenticated': False}), 401
+
+
+@app.route('/api/gpu-cleanup', methods=['POST'])
+@require_api_auth
+def gpu_cleanup():
+    """Force GPU cleanup for the Qwen audio grading agent"""
+    try:
+        # Unload Qwen model
+        qwen_audio_grading_agent.unload_model()
+
+        # Also clear PyTorch cache if available
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+
+        return jsonify({
+            "status": "success",
+            "message": "GPU cleanup completed successfully",
+            "model_status": {
+                "qwen_loaded": qwen_audio_grading_agent.model_loaded
+            }
+        })
+    except Exception as e:
+        logger.error(f"GPU cleanup failed: {e}")
+        return jsonify({
+            "status": "error",
+            "message": f"GPU cleanup failed: {str(e)}"
+        }), 500
+
+
+@app.route('/api/agent-status', methods=['GET'])
+@require_api_auth
+def agent_status():
+    """Get detailed status of all grading agents"""
+    try:
+        qwen_status = qwen_audio_grading_agent.health_check()
+
+        return jsonify({
+            "status": "success",
+            "agents": {
+                "qwen_audio": qwen_status
+            },
+            "timestamp": datetime.utcnow().isoformat()
+        })
+    except Exception as e:
+        logger.error(f"Agent status check failed: {e}")
+        return jsonify({
+            "status": "error",
+            "message": f"Agent status check failed: {str(e)}"
+        }), 500
 
 
 if __name__ == "__main__":
