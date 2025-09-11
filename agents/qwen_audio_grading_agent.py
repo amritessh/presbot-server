@@ -236,15 +236,15 @@ class QwenAudioGradingAgent:
 
         # Use the SAME prompt structure as your existing AudioGradingAgent
         # but with audio-specific instructions
-        prompt = f"""You are an expert speaking coach and grader.
-
+        prompt = f""" <|audio_bos|><|AUDIO|><|audio_eos|>You are an expert speaking coach and grader.
+ 
 The speaker is preparing for a "{presentation_type}" targeting "{audience}". Their specific goals are: {goals_text}.
-
+ 
 Give feedback and suggestions customized to the type of presentation, audience, and these goals.
 Be culturally sensitive: DO NOT suggest changes to accent or cultural speech style. Focus on clarity, pacing, confidence, engagement, and natural delivery. DO NOT mention accent or compare to native speakers.
-
+ 
 IMPORTANT: You can hear the actual audio recording. Base your analysis on what you HEAR, not just the transcript.
-
+ 
 1. Rewrite the student's speech to improve grammar, clarity, flow, and natural speech (without changing their intent or topic).
 2. Assign an overall score (1-5) for the speech using the rubric and weighing most relevant categories for this context.
 3. For each rubric category (see below), give:
@@ -257,7 +257,7 @@ IMPORTANT: You can hear the actual audio recording. Base your analysis on what y
    - A type ("positive" or "issue")
    - A short message (5-12 words, e.g., "Excellent opening statement" or "Minor mumble on 'statistics'")
    - The timestamp (in seconds, as a float or integer, e.g., 12 or 12.3), using the audio timing for when this moment occurs.
-
+ 
 Return ONLY this JSON format and nothing else:
 {{
   "script": "<string>",
@@ -360,6 +360,7 @@ Here is the rubric (JSON):
             # Preprocess audio
             processed_audio_path = self._preprocess_audio(audio_path)
 
+            audio, sr = librosa.load(processed_audio_path, sr=16000)
             # Build prompt
             prompt = self._build_audio_grading_prompt(
                 presentation_type, audience, goals, custom_goals, transcript
@@ -370,7 +371,7 @@ Here is the rubric (JSON):
             # Process with Qwen2-Audio
             inputs = self.processor(
                 text=prompt,
-                audios=processed_audio_path,
+                audio=audio,
                 return_tensors="pt",
                 sampling_rate=16000
             )
@@ -392,8 +393,9 @@ Here is the rubric (JSON):
 
             # Decode response
             response = self.processor.batch_decode(
-                outputs,
-                skip_special_tokens=True
+                outputs[:, inputs['input_ids'].shape[1]:],
+                skip_special_tokens=True,
+                clean_up_tokenization_spaces=True
             )[0]
 
             # Clean up temporary file
