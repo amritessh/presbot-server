@@ -59,7 +59,7 @@ CORS(app, resources={
 })
 
 # ====================== MONGODB CONFIG ======================
-MONGO_URI = "mongodb://admin:BotBox010825@localhost:27017/dash_portal?authSource=admin"
+MONGO_URI = "mongodb://admin:BotBox010825@localhost:27017/dash_portal_uat?authSource=admin"
 mongo_client = MongoClient(MONGO_URI)
 db = mongo_client.dash_portal
 users_collection = db.users
