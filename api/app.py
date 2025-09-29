@@ -21,8 +21,7 @@ from utils.utils import (
     transcribe_with_whisper, get_best_12_seconds, get_unique_filename,
     upload_to_minio, process_pauses
 )
-from agents.audio_grading_agent import AudioGradingAgent
-from agents.qwen_audio_grading_agent import QwenAudioGradingAgent
+from agents.audio_grading_agent import VoiceGradingAgent
 from agents.script_grading_agent import ScriptGradingAgent
 
 # Pydantic models
@@ -33,10 +32,10 @@ from models.models import (
 )
 
 # Initialize grading agents
-audio_grading_agent = AudioGradingAgent(
-    LLAMA_URL, LLAMA_MODEL, "config/rubric.json")
-qwen_audio_grading_agent = QwenAudioGradingAgent(
-    rubric_path="config/rubric.json")
+voiceclone_grading_agent = VoiceGradingAgent(
+    llama_url="http://localhost:5000/api/generate",
+    llama_model=LLAMA_MODEL
+)
 script_grading_agent = ScriptGradingAgent(
     llama_url="http://localhost:5000/api/chat",
     llama_model=LLAMA_MODEL
@@ -153,7 +152,7 @@ def require_api_auth(f):
 
 
 @app.route('/grade', methods=['POST'])
-@require_api_auth
+# @require_api_auth  # Commented out for testing
 def grade_audio():
     """Grade audio with real-time feedback"""
     try:
@@ -203,12 +202,12 @@ def grade_audio():
         print("AUDIO PATH:", audio_path)
         print("WHISPER TRANSCRIPT:", transcript)
 
-        # Phase 1: Audio grading
-        print("Starting audio grading...")
-        audio_results = qwen_audio_grading_agent.grade_audio_delivery(
+        # Phase 1: VoiceClone Audio grading
+        print("Starting VoiceClone audio grading...")
+        audio_results = voiceclone_grading_agent.grade_audio_delivery(
             audio_path, presentation_type, audience, goals, custom_goals, transcript
         )
-        print("Audio grading completed.")
+        print("VoiceClone audio grading completed.")
 
         refined_script = audio_results.get("script", "")
         grade_result = audio_results
@@ -267,13 +266,12 @@ def grade_audio():
             "script_analysis_pending": False,
             "audio_grading": {
                 "score": audio_results.get("score", 0),
-                "overall_feedback": audio_results.get("overall_feedback", ""),
+                "feedback": audio_results.get("overall_feedback", {}),
+                "key_metrics": audio_results.get("key_metrics", {}),
                 "original_transcript": transcript,
                 "refined_transcript": process_pauses(grade_result.get("script", "")),
-                "rubric_details": audio_results.get("rubric_details", []),
-                "key_moments": audio_results.get("key_moments", [])[:4],
-                "categories_evaluated": ["Clarity", "Confidence", "Tone", "Pacing", "Engagement", "Cadence", "Flow"],
-                "improvement_needed": improvement_needed
+                "categories_evaluated": list(audio_results.get("voiceclone_raw_output", {}).get("rubric", {}).keys()),
+                "improvement_needed": improvement_needed,
             },
             "script_grading": script_results
         })
